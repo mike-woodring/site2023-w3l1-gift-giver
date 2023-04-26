@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const router = require("./routes/gift-exchange")
+const { NotFoundError } = require("./utils/errors")
 
 const app = express();
 
@@ -10,6 +11,10 @@ app.use("/gift-exchange", router);
 
 app.get("/", async (req, res) => {
     res.json({ ping: "pong" })
+});
+
+app.use((req, res, next) => {
+    return next(new NotFoundError())
 });
 
 app.use((error, req, res, next) => {

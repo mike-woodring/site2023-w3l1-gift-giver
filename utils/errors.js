@@ -1,5 +1,5 @@
 class ExpressError extends Error {
-    ExpressError(message, status) {
+    constructor(message, status) {
         super();
 
         this.message = message;
@@ -8,13 +8,13 @@ class ExpressError extends Error {
 }
 
 class BadRequestError extends ExpressError {
-    BadRequestError(message = "Bad request") {
+    constructor(message = "Bad request") {
         super(message, 400);
     }
 }
 
 class NotFoundError extends ExpressError {
-    NotFoundError(message = "Not found") {
+    constructor(message = "Not found") {
         super(message, 404);
     }
 }

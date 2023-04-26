@@ -1,3 +1,5 @@
+const { BadRequestError } = require("../utils/errors")
+
 class GiftExchange {
     static pairs(names) {
         if (names.length % 2 != 0) {
