@@ -12,4 +12,13 @@ app.get("/", async (req, res) => {
     res.json({ ping: "pong" })
 });
 
+app.use((error, req, res, next) => {
+    const status = error.status || 500;
+    const message = error.message || "Something went wrong in the application";
+
+    return res.status(status).json({
+        error: { message, status }
+    })
+});
+
 module.exports = app;
